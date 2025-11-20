@@ -6,13 +6,15 @@ public:
     int high=nums.size()-1;
     while(mid<=high){
         if(nums[mid]==2){
+            int temp = nums[mid];
             nums[mid]= nums[high];
-            nums[high]=2;
+            nums[high]=temp;
             high--;
         }
         else if(nums[mid]==0){
+            int temp = nums[mid];
             nums[mid]=nums[low];
-            nums[low] = 0;
+            nums[low] = temp;
             low++; mid++;
         }
         else mid++;    // already 1 at mid idx
