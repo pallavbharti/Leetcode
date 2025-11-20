@@ -19,14 +19,14 @@ public:
             if(max<height[i]) max = height[i];
         }
         // minimum array :
-        int mini[n];
+        
         for(int i =0 ; i<n ;i++){
-            mini[i] = min(prev[i],next[i]);
+            prev[i] = min(prev[i],next[i]);
         }
         // calculating water: 
         int water =0;
         for(int i=1; i<n-1; i++){
-            if(mini[i]>height[i]) water += (mini[i] - height[i]);
+            if(prev[i]>height[i]) water += (prev[i] - height[i]);
         }
         return water;
     }
