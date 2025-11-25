@@ -1,29 +1,28 @@
-class Solution {
+class Solution {    // TC = O(n *n!)
 public:
-void helper(vector<int>& nums ,vector<vector<int>>&finalAns,vector<int>ans){
-    if(nums.size()==0){
-        finalAns.push_back(ans);
+void permuteHelper(int index, vector<int>& nums, vector<vector<int>>& ans) {
+
+    // 1. Base case
+    if(index == nums.size()) {
+        ans.push_back(nums);
         return;
     }
-    for(int i = 0 ; i < nums.size() ; i++){
-        int ch = nums[i];
-        vector<int>left(nums.begin(),nums.begin()+i);
-        vector<int>right(nums.begin()+i+1,nums.end());
-        vector<int> remaining = left;  
-        for(int x : right) remaining.push_back(x);   // right ke elements add kar diye
 
-        vector<int> newAns = ans;
-        newAns.push_back(ch);
+    // 2. Loop for choices
+    for(int i = index; i < nums.size(); i++) {
 
-        helper(remaining, finalAns, newAns);
+        swap(nums[index], nums[i]);          // CHOICE
 
+        permuteHelper(index + 1, nums, ans); // EXPLORE
+
+        swap(nums[index], nums[i]);          // UNDO
     }
 }
-    vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>>finalAns;
-        vector<int>ans;
-        helper(nums,finalAns,ans);
-        return finalAns;
 
-    }
+    vector<vector<int>> permute(vector<int>& nums) {
+    vector<vector<int>> ans;
+    permuteHelper(0, nums, ans);
+    return ans;
+}
+
 };
