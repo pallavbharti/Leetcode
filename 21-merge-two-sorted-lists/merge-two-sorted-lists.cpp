@@ -7,12 +7,12 @@ public:
         ListNode* l2 = list2;
         while(l1 && l2){
             if(l1->val <= l2 ->val){
-                lo ->next = l1;
+                lo ->next = new ListNode(l1->val);
                 l1=l1->next;
                 lo = lo->next;
             }
             else{
-                lo ->next = l2;
+                lo ->next =new ListNode(l2->val);
                 l2=l2->next;
                 lo = lo->next;
             }
