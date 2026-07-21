@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void helper(TreeNode* root,int &sum){
+    void helper(TreeNode* root,int& sum){
     
         if(root==NULL)return ;
         if(root->left && root->left->left==NULL && root->left->right==NULL){
