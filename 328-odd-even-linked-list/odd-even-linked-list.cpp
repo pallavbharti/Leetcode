@@ -1,28 +1,27 @@
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
-        ListNode* lo = new ListNode(100);
-        ListNode* hi = new ListNode(100);
-        ListNode* tempLo = lo;
-        ListNode* tempHi = hi;
+        ListNode* low= new ListNode(0);
+        ListNode* high= new ListNode(0);
+        ListNode* th = high;
+        ListNode* tl = low;
         ListNode* temp = head;
         int idx = 0;
         while(temp){
             if(idx%2==0){
-                tempLo->next = temp;
-                idx++;
-                tempLo = tempLo->next;
+                tl->next = temp;
                 temp = temp->next;
-            }
-            else{
-                tempHi->next = temp;
+                tl = tl->next;
                 idx++;
-                tempHi = tempHi->next;
-                temp = temp->next; 
+            }else{
+                th->next = temp;
+                temp = temp->next;
+                th = th->next;
+                idx++;
             }
         }
-        tempHi->next = NULL;
-        tempLo -> next = hi->next;
-        return lo->next;
+        tl->next = high->next;
+        th->next = NULL;
+        return low->next;
     }
 };
