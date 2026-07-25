@@ -28,7 +28,7 @@ public:
         if(head==NULL || head->next==NULL)return head;
         ListNode* slow = head;
         ListNode* fast = head;
-        while(fast->next!=NULL && fast->next->next!=NULL){
+        while(fast->next!=NULL && fast->next->next!=NULL){// left middle 
             slow = slow->next;
             fast=fast->next->next;
         }// slow at left middle
